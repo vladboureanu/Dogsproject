@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= breed._id ? 'Edit' : 'Add' %> Breed</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1><%= breed._id ? 'Edit' : 'Add' %> Breed</h1>
+  <form action="<%= action %>" method="POST">
+    <input type="hidden" name="_method" value="<%= method %>">
+    <div>
+      <label for="breed">Breed:</label>
+      <input type="text" id="breed" name="breed" value="<%= breed.breed %>" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required><%= breed.description %></textarea>
+    </div>
+    <div>
+      <label for="origin">Origin:</label>
+      <input type="text" id="origin" name="origin" value="<%= breed.origin %>" required>
+    </div>
+    <div>
+      <label for="life_span">Life Span:</label>
+      <input type="text" id="life_span" name="life_span" value="<%= breed.life_span %>" required>
+    </div>
+    <div>
+      <label for="temperament">Temperament:</label>
+      <input type="text" id="temperament" name="temperament" value="<%= breed.temperament %>" required>
+    </div>
+    <div>
+      <label for="image_url">Image URL:</label>
+      <input type="text" id="image_url" name="image_url" value="<%= breed.image_url %>" required>
+    </div>
+    <button type="submit"><%= breed._id ? 'Update' : 'Add' %> Breed</button>
+  </form>
+  <a href="/breeds">Back to List</a>
+</body>
+</html>

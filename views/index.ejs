@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog Breeds</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-4">Dog Breeds</h1>
+    <a href="/breeds/new" class="btn btn-primary mb-3">Add New Breed</a>
+    
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Breed</th>
+            <th scope="col">Description</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Life Span</th>
+            <th scope="col">Temperament</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% breeds.forEach((breed, index) => { %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= breed.breed %></td>
+              <td><%= breed.description %></td>
+              <td><%= breed.origin %></td>
+              <td><%= breed.life_span %></td>
+              <td><%= breed.temperament %></td>
+              <td>
+                <a href="/breeds/<%= breed._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                <form action="/breeds/<%= breed._id %>/delete" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
